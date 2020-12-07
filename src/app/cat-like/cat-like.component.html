@@ -1,0 +1,4 @@
+<span class="spacer">{{cat.like}}</span>
+<button class="spacer" color="primary" mat-mini-fab  (click)="like(cat)">+</button>
+<button class="spacer" color="primary" mat-mini-fab [disabled]="cat.like > 0 ? disabledLike : !disabledLike" (click)="dislike(cat)">-</button>
+        

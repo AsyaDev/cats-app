@@ -1,0 +1,15 @@
+<div>
+    <div>        
+        <label for="filePicker">Choose or drag a file:</label><br>
+        <input type="file" id="filePicker" mat-stroked-button color="primary" (change)="handleFileSelect($event)">
+    </div>
+    <br>
+    <div>
+        <img src="{{img}}" class="cat-img-preview">
+        <h3>Base64 encoded version</h3>
+        <textarea id="base64textarea" [value]="base64textString" 
+        disabled        
+        placeholder="Base64 will appear here" cols="50" rows="15">{{base64textString}}</textarea>
+       
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<p *ngIf="loading">Loading...</p>
+<mat-card>
+    <div (click)="goBack()" class="back-arrow"> &larr; Назад к списку</div>
+<div *ngIf="!editForm && !loading">
+    <div class="cat-card">
+    <img src="{{cat.img}}" />
+    <div class="cat-description">
+        <mat-card-title>{{cat.name}}</mat-card-title>
+        <p>{{cat.description}}</p>
+        <app-cat-like [(cat)]="cat"></app-cat-like>  
+    </div> 
+      
+    <div class="buttons-block">
+        <button (click)="showHideForm()" mat-stroked-button color="primary">Edit</button>
+        <button (click)="removeCat(cat._id)" mat-stroked-button color="primary">Delete</button>
+    </div>   
+</div>
+</div>
+<div *ngIf="editForm">
+    <app-cat-form  [(cat)]="cat"></app-cat-form>
+    <a  mat-stroked-button color="primary" (click)="showHideForm()">Отмена</a>    
+</div>
+</mat-card>
+
+
+

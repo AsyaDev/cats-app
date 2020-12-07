@@ -1,0 +1,23 @@
+<div *ngIf="!loading">
+    
+    <div class="filter">
+        <input matInput type="text" placeholder="Filter cats by name..." [(ngModel)]="searchString">
+        <button mat-stroked-button color="primary" routerLink = "/cat-form">Add new Cat</button>
+    </div>
+<ul *ngIf="catsService.cats.length; else noCats">
+    
+    <li *ngFor="let cat of cats$ | async | catsFilter:searchString; let i = index">
+        <a [routerLink] = "['cat-card', cat._id]">
+            <strong>{{i+1}}</strong>
+            <img src="{{cat.img}}" />        
+            <span> {{cat.name}}                     
+            </span>
+        </a>
+        <app-cat-like [(cat)]="cat"></app-cat-like>            
+    </li>    
+</ul>
+<ng-template #noCats>
+    <p>No cats now!</p>
+</ng-template>
+</div>
+<p *ngIf="loading">...loading... </p>

@@ -1,0 +1,27 @@
+<form [formGroup]="catForm" novalidate (ngSubmit)="addCat()">
+    <mat-form-field class="full-width"> 
+        <mat-label>Имя кота <sup>*</sup></mat-label>
+        <input class="form-control" matInput type="text" name="name" placeholder="Add cat name..." formControlName="name" />
+        <mat-error *ngIf="catForm.controls['name'].invalid">
+            Не указано имя
+        </mat-error>        
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Описание кота <sup>*</sup></mat-label>
+        <textarea class="form-control" matInput name="description" placeholder="Add cat description..." formControlName="description">
+        </textarea>
+        <mat-error *ngIf="catForm.controls['description'].invalid">
+            Не указано описание
+        </mat-error>  
+    </mat-form-field>
+         
+        <app-base-sixty-four-input [(img)]="img" [(error)]="error" (isError)="onError($event)" (imgChanged)="imgChangedHandler($event)"></app-base-sixty-four-input>        
+        <div *ngIf="error" class="base-error">Не загружена картинка</div>
+    
+   
+    <div class="form-group">
+        <button mat-stroked-button color="primary" [disabled]="catForm.invalid || error">
+            Сохранить
+        </button>
+    </div>
+</form>
